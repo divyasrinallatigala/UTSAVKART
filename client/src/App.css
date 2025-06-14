@@ -1,0 +1,17 @@
+/* client/src/styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+nav a {
+  margin-right: 10px;
+}
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 300px;
+}
+button {
+  padding: 8px 16px;
+}
