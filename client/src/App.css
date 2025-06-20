@@ -1,4 +1,3 @@
-/* client/src/styles.css */
 * {
   margin: 0;
   padding: 0;
@@ -6,10 +5,25 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  font-family: 'Playfair Display', 'Georgia', serif;
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 25%, #f3e8ff 50%, #e0e7ff 75%, #ddd6fe 100%);
   min-height: 100vh;
-  color: #333;
+  color: #6b21a8;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='floral' patternUnits='userSpaceOnUse' width='100' height='100'%3E%3Cg fill='none' stroke='%23d8b4fe' stroke-width='0.5' opacity='0.3'%3E%3Cpath d='M20,20 Q30,10 40,20 Q50,30 40,40 Q30,50 20,40 Q10,30 20,20 Z'/%3E%3Cpath d='M60,60 Q70,50 80,60 Q90,70 80,80 Q70,90 60,80 Q50,70 60,60 Z'/%3E%3Cpath d='M80,20 Q90,10 100,20 Q110,30 100,40 Q90,50 80,40 Q70,30 80,20 Z'/%3E%3Cpath d='M20,80 Q30,70 40,80 Q50,90 40,100 Q30,110 20,100 Q10,90 20,80 Z'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23floral)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
 }
 
 .container {
@@ -18,93 +32,259 @@ body {
   padding: 0 20px;
 }
 
-/* Form Elements */
+/* Ornate borders and decorative elements */
+.ornate-border {
+  border: 3px solid transparent;
+  background: linear-gradient(45deg, #d8b4fe, #c084fc, #a855f7) border-box;
+  border-radius: 20px;
+  position: relative;
+}
+
+.ornate-border::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  background: linear-gradient(45deg, #f3e8ff, #e9d5ff, #ddd6fe);
+  border-radius: 24px;
+  z-index: -1;
+}
+
+.decorative-corners {
+  position: relative;
+}
+
+.decorative-corners::before,
+.decorative-corners::after {
+  content: '✦';
+  position: absolute;
+  color: #a855f7;
+  font-size: 24px;
+  opacity: 0.6;
+}
+
+.decorative-corners::before {
+  top: -12px;
+  left: -12px;
+}
+
+.decorative-corners::after {
+  bottom: -12px;
+  right: -12px;
+}
+
+/* Enhanced form elements */
 input, textarea, select {
   width: 100%;
-  padding: 12px 16px;
-  margin-bottom: 16px;
-  border: 2px solid #e1e5e9;
-  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  border: 2px solid #e9d5ff;
+  border-radius: 15px;
   font-size: 16px;
-  transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.9);
+  font-family: 'Playfair Display', serif;
+  transition: all 0.4s ease;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  color: #6b21a8;
 }
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: #ff6b35;
-  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-  background: white;
+  border-color: #a855f7;
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
 }
 
+input::placeholder {
+  color: #a78bfa;
+  font-style: italic;
+}
+
+/* Enhanced buttons */
 button {
-  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  background: linear-gradient(135deg, #a855f7, #8b5cf6, #7c3aed);
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 16px 32px;
+  border-radius: 25px;
   font-size: 16px;
   font-weight: 600;
+  font-family: 'Playfair Display', serif;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+button:hover::before {
+  left: 100%;
 }
 
 button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(168, 85, 247, 0.4);
 }
 
 button:active {
-  transform: translateY(0);
+  transform: translateY(-2px);
 }
-/*responsive design*/
+
+/* Elegant typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #6b21a8;
+  margin-bottom: 16px;
+}
+
+.elegant-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  background: linear-gradient(135deg, #6b21a8, #8b5cf6, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.elegant-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(135deg, #6b21a8, #8b5cf6, #a855f7);
+  border-radius: 2px;
+}
+
+/* Card enhancements */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #a855f7, transparent);
+}
+
+.glass-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
   .nav-links {
     gap: 15px;
   }
   
   nav a {
-    padding: 6px 12px;
+    padding: 8px 16px;
     font-size: 14px;
   }
   
-  .home-title {
-    font-size: 3rem;
+  .elegant-title {
+    font-size: 2.5rem;
   }
   
-  .home-cta {
-    flex-direction: column;
-    align-items: center;
+  .glass-card {
+    padding: 20px;
+    margin: 15px;
   }
   
-  .auth-card {
-    padding: 30px 20px;
-    margin: 20px;
-  }
-  
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 0;
+  button {
+    padding: 12px 24px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
-  .home-title {
-    font-size: 2.5rem;
+  .elegant-title {
+    font-size: 2rem;
   }
   
-  .home-subtitle {
-    font-size: 1.2rem;
+  .glass-card {
+    padding: 16px;
   }
   
-  .cta-button {
-    padding: 12px 24px;
-    font-size: 16px;
+  input, textarea, select {
+    padding: 12px 16px;
   }
+}
+
+/* Smooth animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out;
 }

@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import "./Signup.css";
 
-export default function Signup() {
+function Signup() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [msg, setMsg] = useState("");
@@ -70,3 +71,4 @@ export default function Signup() {
     </div>
   );
 }
+export default Signup;

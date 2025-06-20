@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import "./Login.css";
 
-export default function Login() {
+function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [msg, setMsg] = useState("");
@@ -70,3 +71,4 @@ export default function Login() {
     </div>
   );
 }
+export default Login;
