@@ -1,21 +1,47 @@
 // client/src/components/Signup.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import "./Signup.css";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [msg, setMsg] = useState("");
   const [msgType, setMsgType] = useState("");
+  const navigate = useNavigate();
 
   const submit = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, pass);
-      setMsg("Account created successfully! Welcome to UtsavKart.");
+      const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+      const user = userCredential.user;
+
+      // Update displayName and phoneNumber (optional, stored separately)
+      await updateProfile(user, {
+        displayName: name,
+      });
+
+      // Store extra info in Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        name,
+        email,
+        phone,
+        createdAt: new Date()
+      });
+
+      setMsg("Account created successfully! Redirecting...");
       setMsgType("success");
+
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1500);
     } catch (e) {
       setMsg("Registration failed: " + e.message);
       setMsgType("error");
@@ -25,50 +51,19 @@ function Signup() {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <div className="auth-header">
-          <h2 className="auth-title">Join UtsavKart</h2>
-          <p className="auth-subtitle">Create your account to start shopping</p>
-        </div>
-        
+        <h2 className="auth-title">Join UtsavKart</h2>
         <form className="auth-form" onSubmit={submit}>
-          <div className="form-group">
-            <label className="form-label">Email Address</label>
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              value={email}
-              onChange={e => setEmail(e.target.value)} 
-              required 
-            />
-          </div>
-          
-          <div className="form-group">
-            <label className="form-label">Password</label>
-            <input 
-              type="password" 
-              placeholder="Create a password" 
-              value={pass}
-              onChange={e => setPass(e.target.value)} 
-              required 
-            />
-          </div>
-          
-          <button type="submit" className="auth-button">
-            Create Account
-          </button>
+          <input type="text" placeholder="Full Name" value={name} onChange={e => setName(e.target.value)} required />
+          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
+          <input type="tel" placeholder="Phone" value={phone} onChange={e => setPhone(e.target.value)} required />
+          <input type="password" placeholder="Password" value={pass} onChange={e => setPass(e.target.value)} required />
+          <button type="submit" className="auth-button">Create Account</button>
         </form>
-        
-        {msg && (
-          <div className={`auth-message ${msgType}`}>
-            {msg}
-          </div>
-        )}
-        
-        <div className="auth-switch">
-          Already have an account? <a href="/login">Sign in here</a>
-        </div>
+        {msg && <div className={`auth-message ${msgType}`}>{msg}</div>}
+        <div className="auth-switch">Already have an account? <a href="/login">Sign in</a></div>
       </div>
     </div>
   );
 }
+
 export default Signup;

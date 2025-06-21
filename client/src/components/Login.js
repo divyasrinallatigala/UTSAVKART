@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
@@ -9,6 +10,7 @@ function Login() {
   const [pass, setPass] = useState("");
   const [msg, setMsg] = useState("");
   const [msgType, setMsgType] = useState("");
+  const navigate = useNavigate();
 
   const submit = async (e) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ function Login() {
       await signInWithEmailAndPassword(auth, email, pass);
       setMsg("Welcome back! Login successful.");
       setMsgType("success");
+      navigate("/dashboard");
     } catch (e) {
       setMsg("Login failed: " + e.message);
       setMsgType("error");

@@ -32,7 +32,7 @@ const Home = () => {
           <a href="/login" className="cta-button cta-primary">
             ✨ Start Your Journey
           </a>
-          <a href="/seller" className="cta-button cta-secondary">
+          <a href="/seller/register" className="cta-button cta-secondary">
             🌟 Become a Partner
           </a>
         </div>

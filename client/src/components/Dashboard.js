@@ -1,7 +1,17 @@
-import React, { useState, useEffect } from "react";
-import "./Dashboard.css";
-import { FaUser, FaHeart, FaShoppingCart, FaBox, FaSearch, FaBell, FaCog } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Outlet, useLocation } from "react-router-dom";
+import {
+  FaUser,
+  FaHeart,
+  FaShoppingCart,
+  FaBox,
+  FaSearch,
+  FaBell,
+  FaCog,
+} from "react-icons/fa";
+import { auth, db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
+import "./Dashboard.css";
 
 const categories = [
   {
@@ -9,60 +19,75 @@ const categories = [
     icon: "🪔",
     color: "linear-gradient(135deg, #ff9a9e, #fecfef)",
     path: "/dashboard/festivals?hindu=true",
-    description: "Celebrate with traditional items"
+    description: "Celebrate with traditional items",
   },
   {
     title: "Muslim Festival",
     icon: "🕌",
     color: "linear-gradient(135deg, #a8edea, #fed6e3)",
     path: "/dashboard/festivals?muslim=true",
-    description: "Sacred celebration essentials"
+    description: "Sacred celebration essentials",
   },
   {
     title: "Christian Festival",
     icon: "⛪",
     color: "linear-gradient(135deg, #d299c2, #fef9d7)",
     path: "/dashboard/festivals?christian=true",
-    description: "Blessed occasion decorations"
+    description: "Blessed occasion decorations",
   },
   {
     title: "Birthday Party",
     icon: "🎂",
     color: "linear-gradient(135deg, #ffecd2, #fcb69f)",
     path: "/dashboard/events?type=birthday",
-    description: "Make birthdays memorable"
+    description: "Make birthdays memorable",
   },
   {
     title: "Wedding",
     icon: "💍",
     color: "linear-gradient(135deg, #fbc2eb, #a6c1ee)",
     path: "/dashboard/events?type=marriage",
-    description: "Perfect wedding arrangements"
+    description: "Perfect wedding arrangements",
   },
   {
     title: "Housewarming",
     icon: "🏠",
     color: "linear-gradient(135deg, #c3ec52, #0ba29d)",
     path: "/dashboard/events?type=housewarming",
-    description: "New home celebrations"
-  }
+    description: "New home celebrations",
+  },
 ];
 
 const quickActions = [
   { title: "Flash Sale", icon: "⚡", color: "#ff6b6b" },
   { title: "New Arrivals", icon: "🌟", color: "#4ecdc4" },
   { title: "Best Sellers", icon: "🏆", color: "#45b7d1" },
-  { title: "Bulk Orders", icon: "📦", color: "#96ceb4" }
+  { title: "Bulk Orders", icon: "📦", color: "#96ceb4" },
 ];
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [userData, setUserData] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [notifications, setNotifications] = useState(3);
   const [activeCategory, setActiveCategory] = useState(null);
 
-  const isMainDashboard = location.pathname === "/dashboard" || location.pathname === "/dashboard/";
+  const isMainDashboard =
+    location.pathname === "/dashboard" || location.pathname === "/dashboard/";
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+        if (userDoc.exists()) {
+          setUserData(userDoc.data());
+        }
+      }
+    };
+    fetchUser();
+  }, []);
 
   const handleSidebarClick = (path) => {
     navigate(path);
@@ -86,42 +111,52 @@ const Dashboard = () => {
         <div className="sidebar-header">
           <div className="logo-mini">U</div>
         </div>
-        
+
         <div className="sidebar-menu">
-          <div 
-            className={`sidebar-item ${location.pathname.includes('/cart') ? 'active' : ''}`}
+          <div
+            className={`sidebar-item ${
+              location.pathname.includes("/cart") ? "active" : ""
+            }`}
             onClick={() => handleSidebarClick("/dashboard/cart")}
           >
             <FaShoppingCart className="sidebar-icon" />
             <span className="tooltip">Cart</span>
           </div>
-          
-          <div 
-            className={`sidebar-item ${location.pathname.includes('/profile') ? 'active' : ''}`}
+
+          <div
+            className={`sidebar-item ${
+              location.pathname.includes("/profile") ? "active" : ""
+            }`}
             onClick={() => handleSidebarClick("/dashboard/profile")}
           >
             <FaUser className="sidebar-icon" />
             <span className="tooltip">Profile</span>
           </div>
-          
-          <div 
-            className={`sidebar-item ${location.pathname.includes('/likes') ? 'active' : ''}`}
+
+          <div
+            className={`sidebar-item ${
+              location.pathname.includes("/likes") ? "active" : ""
+            }`}
             onClick={() => handleSidebarClick("/dashboard/likes")}
           >
             <FaHeart className="sidebar-icon" />
             <span className="tooltip">Wishlist</span>
           </div>
-          
-          <div 
-            className={`sidebar-item ${location.pathname.includes('/orders') ? 'active' : ''}`}
+
+          <div
+            className={`sidebar-item ${
+              location.pathname.includes("/orders") ? "active" : ""
+            }`}
             onClick={() => handleSidebarClick("/dashboard/orders")}
           >
             <FaBox className="sidebar-icon" />
             <span className="tooltip">Orders</span>
           </div>
-          
-          <div 
-            className={`sidebar-item ${location.pathname.includes('/settings') ? 'active' : ''}`}
+
+          <div
+            className={`sidebar-item ${
+              location.pathname.includes("/settings") ? "active" : ""
+            }`}
             onClick={() => handleSidebarClick("/dashboard/settings")}
           >
             <FaCog className="sidebar-icon" />
@@ -136,37 +171,56 @@ const Dashboard = () => {
             <header className="dashboard-header">
               <div className="header-left">
                 <h1 className="dashboard-title">Welcome back! 👋</h1>
-                <p className="dashboard-subtitle">Discover amazing products for your celebrations</p>
+                <p className="dashboard-subtitle">
+                  Discover amazing products for your celebrations
+                </p>
               </div>
-              
+
               <div className="header-right">
                 <form className="search-container" onSubmit={handleSearch}>
                   <FaSearch className="search-icon" />
-                  <input 
-                    className="search-input" 
-                    placeholder="Search products, categories..." 
+                  <input
+                    className="search-input"
+                    placeholder="Search products, categories..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
                 </form>
-                
+
                 <div className="notification-bell">
                   <FaBell />
-                  {notifications > 0 && <span className="notification-badge">{notifications}</span>}
+                  {notifications > 0 && (
+                    <span className="notification-badge">{notifications}</span>
+                  )}
                 </div>
-                
-                <div className="user-avatar">
+
+                <div
+                  className="user-avatar"
+                  title={userData?.name || "Profile"}
+                >
                   <img src="/api/placeholder/40/40" alt="User" />
                 </div>
               </div>
             </header>
+
+            {userData && (
+              <div className="user-summary">
+                <h3>Welcome, {userData.name}</h3>
+                <p>Email: {userData.email}</p>
+                <p>Phone: {userData.phone}</p>
+              </div>
+            )}
 
             <div className="dashboard-content">
               <section className="quick-actions">
                 <h3>Quick Actions</h3>
                 <div className="quick-actions-grid">
                   {quickActions.map((action, index) => (
-                    <div key={index} className="quick-action-card" style={{ borderColor: action.color }}>
+                    <div
+                      key={index}
+                      className="quick-action-card"
+                      style={{ borderColor: action.color }}
+                    >
                       <span className="quick-action-icon">{action.icon}</span>
                       <span className="quick-action-title">{action.title}</span>
                     </div>
@@ -183,13 +237,17 @@ const Dashboard = () => {
                   {categories.slice(0, 3).map((category, index) => (
                     <div
                       key={index}
-                      className={`category-card ${activeCategory === category.title ? 'active' : ''}`}
+                      className={`category-card ${
+                        activeCategory === category.title ? "active" : ""
+                      }`}
                       style={{ background: category.color }}
                       onClick={() => handleCategoryClick(category)}
                     >
                       <div className="category-icon">{category.icon}</div>
                       <h4 className="category-title">{category.title}</h4>
-                      <p className="category-description">{category.description}</p>
+                      <p className="category-description">
+                        {category.description}
+                      </p>
                       <div className="category-arrow">→</div>
                     </div>
                   ))}
@@ -205,13 +263,17 @@ const Dashboard = () => {
                   {categories.slice(3).map((category, index) => (
                     <div
                       key={index}
-                      className={`category-card ${activeCategory === category.title ? 'active' : ''}`}
+                      className={`category-card ${
+                        activeCategory === category.title ? "active" : ""
+                      }`}
                       style={{ background: category.color }}
                       onClick={() => handleCategoryClick(category)}
                     >
                       <div className="category-icon">{category.icon}</div>
                       <h4 className="category-title">{category.title}</h4>
-                      <p className="category-description">{category.description}</p>
+                      <p className="category-description">
+                        {category.description}
+                      </p>
                       <div className="category-arrow">→</div>
                     </div>
                   ))}

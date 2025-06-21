@@ -11,6 +11,7 @@ import Likes from "./components/Likes";
 import Orders from "./components/Orders";
 import SellerRegister from "./components/Seller/SellerRegister";
 import AddProduct from "./components/Seller/AddProduct";
+import Profile from "./components/Profile";
 
 import './App.css';
 
@@ -25,6 +26,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            
+
+            
 
             {/* Seller Routes */}
             <Route path="/seller/register" element={<SellerRegister />} />
@@ -36,6 +41,7 @@ function App() {
               <Route path="cart" element={<Cart />} />
               <Route path="likes" element={<Likes />} />
               <Route path="orders" element={<Orders />} />
+              <Route path="profile" element={<Profile />} />
               {/* Default nested route */}
               <Route index element={<Navigate to="festivals" />} />
             </Route>
