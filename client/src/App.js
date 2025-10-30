@@ -7,6 +7,7 @@ import Signup from "./components/Signup";
 import Dashboard from "./components/Dashboard";
 import Festivals from "./components/Festivals";
 import Cart from "./components/Cart";
+import Search from "./components/Search"; // adjust path if needed
 import Likes from "./components/Likes";
 import Orders from "./components/Orders";
 import SellerRegister from "./components/Seller/SellerRegister";
@@ -17,7 +18,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router >
       <div className="App">
         <NavBar />
         <main>
@@ -42,6 +43,7 @@ function App() {
               <Route path="likes" element={<Likes />} />
               <Route path="orders" element={<Orders />} />
               <Route path="profile" element={<Profile />} />
+              <Route path="search" element={<Search />} />
               {/* Default nested route */}
               <Route index element={<Navigate to="festivals" />} />
             </Route>

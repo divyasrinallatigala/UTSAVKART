@@ -6,9 +6,9 @@
 
 body {
   font-family: 'Playfair Display', 'Georgia', serif;
-  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 25%, #f3e8ff 50%, #e0e7ff 75%, #ddd6fe 100%);
+  background: linear-gradient(135deg, #fdf2f3 0%, #fce7e9 25%, #fff0e8 50%, #fff2e0 75%, #feecd6 100%);
   min-height: 100vh;
-  color: #6b21a8;
+  color: #a82160;
   position: relative;
   overflow-x: hidden;
 }
@@ -35,7 +35,7 @@ body::before {
 /* Ornate borders and decorative elements */
 .ornate-border {
   border: 3px solid transparent;
-  background: linear-gradient(45deg, #d8b4fe, #c084fc, #a855f7) border-box;
+  background: linear-gradient(45deg, #feb4e2, #fc84b4, #f755cf) border-box;
   border-radius: 20px;
   position: relative;
 }
@@ -47,7 +47,7 @@ body::before {
   left: -6px;
   right: -6px;
   bottom: -6px;
-  background: linear-gradient(45deg, #f3e8ff, #e9d5ff, #ddd6fe);
+  background: linear-gradient(45deg, #fff0e8, #ffe6d5, #fee5d6);
   border-radius: 24px;
   z-index: -1;
 }
@@ -60,7 +60,7 @@ body::before {
 .decorative-corners::after {
   content: '✦';
   position: absolute;
-  color: #a855f7;
+  color: #f7e755;
   font-size: 24px;
   opacity: 0.6;
 }
@@ -80,32 +80,32 @@ input, textarea, select {
   width: 100%;
   padding: 16px 20px;
   margin-bottom: 20px;
-  border: 2px solid #e9d5ff;
+  border: 2px solid #ffd5ed;
   border-radius: 15px;
   font-size: 16px;
   font-family: 'Playfair Display', serif;
   transition: all 0.4s ease;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
-  color: #6b21a8;
+  color: #a86921;
 }
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: #a855f7;
-  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+  border-color: #f755a1;
+  box-shadow: 0 0 0 4px rgba(247, 85, 174, 0.1);
   background: rgba(255, 255, 255, 0.95);
   transform: translateY(-2px);
 }
 
 input::placeholder {
-  color: #a78bfa;
+  color: #facf8b;
   font-style: italic;
 }
 
 /* Enhanced buttons */
 button {
-  background: linear-gradient(135deg, #a855f7, #8b5cf6, #7c3aed);
+  background: linear-gradient(135deg, #f755ab, #fa2e80, #e82070);
   color: white;
   border: none;
   padding: 16px 32px;
@@ -115,7 +115,7 @@ button {
   font-family: 'Playfair Display', serif;
   cursor: pointer;
   transition: all 0.4s ease;
-  box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 8px 25px rgba(247, 163, 85, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -137,7 +137,7 @@ button:hover::before {
 
 button:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 35px rgba(168, 85, 247, 0.4);
+  box-shadow: 0 12px 35px rgba(247, 85, 147, 0.4);
 }
 
 button:active {
@@ -148,13 +148,13 @@ button:active {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  color: #6b21a8;
+  color: #a86921;
   margin-bottom: 16px;
 }
 
 .elegant-title {
   font-size: clamp(2.5rem, 6vw, 4rem);
-  background: linear-gradient(135deg, #6b21a8, #8b5cf6, #a855f7);
+  background: linear-gradient(135deg, #a83a21, #f6a65c, #f75596);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -171,7 +171,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(-50%);
   width: 100px;
   height: 3px;
-  background: linear-gradient(135deg, #6b21a8, #8b5cf6, #a855f7);
+  background: linear-gradient(135deg, #a82157, #f65c88, #f7555a);
   border-radius: 2px;
 }
 
@@ -195,7 +195,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #a855f7, transparent);
+  background: linear-gradient(90deg, transparent, #f7b655, transparent);
 }
 
 .glass-card:hover {

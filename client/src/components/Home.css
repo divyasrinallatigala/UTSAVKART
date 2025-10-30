@@ -19,7 +19,7 @@
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(20px);
   border-radius: 30px;
-  border: 2px solid rgba(168, 85, 247, 0.2);
+  border: 2px solid rgba(247, 85, 126, 0.2);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
   position: relative;
 }
@@ -31,7 +31,7 @@
   left: -3px;
   right: -3px;
   bottom: -3px;
-  background: linear-gradient(45deg, #f3e8ff, #e9d5ff, #ddd6fe, #c4b5fd);
+  background: linear-gradient(45deg, #fffbe8, hsl(41, 100%, 92%), #fee2d6, #e69225);
   border-radius: 33px;
   z-index: -1;
 }
@@ -42,7 +42,7 @@
   left: 20px;
   right: 20px;
   bottom: 20px;
-  border: 3px solid #a855f7;
+  border: 3px solid #f7d955;
   border-radius: 20px;
   opacity: 0.3;
 }
@@ -53,7 +53,7 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  border: 3px solid #a855f7;
+  border: 3px solid #f7dc55;
 }
 
 .ornate-frame::before {
@@ -77,7 +77,7 @@
   top: 30px;
   left: 30px;
   font-size: 20px;
-  color: #a855f7;
+  color: #f7a655;
   opacity: 0.6;
 }
 
@@ -100,7 +100,7 @@
   width: 120px;
   height: 120px;
   margin: 0 auto 30px;
-  background: linear-gradient(135deg, #6b21a8, #8b5cf6, #a855f7);
+  background: linear-gradient(135deg, #a87d21, #f65c85, #f75586);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -108,7 +108,7 @@
   font-size: 48px;
   color: white;
   font-weight: bold;
-  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 10px 30px rgba(247, 85, 171, 0.3);
   position: relative;
 }
 
@@ -119,7 +119,7 @@
   left: -10px;
   right: -10px;
   bottom: -10px;
-  border: 2px solid #a855f7;
+  border: 2px solid #f75578;
   border-radius: 50%;
   opacity: 0.5;
 }
@@ -128,12 +128,12 @@
   font-size: clamp(3.5rem, 8vw, 6rem);
   font-weight: 900;
   font-family: 'Playfair Display', serif;
-  background: linear-gradient(135deg, #6b21a8, #8b5cf6, #a855f7, #c084fc);
+  background: linear-gradient(135deg, #f6c05c, #f6c05c, #eaf755, #fc84ca);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 20px;
-  text-shadow: 0 4px 20px rgba(107, 33, 168, 0.3);
+  text-shadow: 0 4px 20px rgba(168, 33, 55, 0.3);
   letter-spacing: -3px;
   position: relative;
 }
@@ -146,13 +146,13 @@
   transform: translateX(-50%);
   width: 200px;
   height: 4px;
-  background: linear-gradient(135deg, #6b21a8, #8b5cf6, #a855f7);
+  background: linear-gradient(135deg, #a86221, #f6ac5c, #eaf755);
   border-radius: 2px;
 }
 
 .home-tagline {
   font-size: 1.3rem;
-  color: #6b21a8;
+  color: #a85521;
   margin-bottom: 15px;
   font-weight: 600;
   font-style: italic;
@@ -161,7 +161,7 @@
 
 .home-subtitle {
   font-size: 1.1rem;
-  color: #7c3aed;
+  color: #ed3a3a;
   margin-bottom: 40px;
   font-weight: 400;
   line-height: 1.8;
@@ -200,7 +200,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.808), transparent);
   transition: left 0.6s ease;
 }
 
@@ -209,17 +209,17 @@
 }
 
 .cta-primary {
-  background: linear-gradient(135deg, #6b21a8, #8b5cf6, #a855f7);
+  background: linear-gradient(135deg, #a8215b, #f65cbb, #f7d155);
   color: white;
-  box-shadow: 0 10px 30px rgba(107, 33, 168, 0.4);
+  box-shadow: 0 10px 30px rgba(168, 33, 98, 0.4);
   border: 2px solid transparent;
 }
 
 .cta-secondary {
   background: rgba(255, 255, 255, 0.9);
-  color: #6b21a8;
-  border: 2px solid #8b5cf6;
-  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.2);
+  color: #a82160;
+  border: 2px solid #f6b85c;
+  box-shadow: 0 8px 25px rgba(203, 112, 20, 0.2);
 }
 
 .cta-button:hover {
@@ -227,19 +227,19 @@
 }
 
 .cta-primary:hover {
-  box-shadow: 0 15px 40px rgba(107, 33, 168, 0.5);
+  box-shadow: 0 15px 40px rgba(168, 119, 33, 0.5);
 }
 
 .cta-secondary:hover {
-  box-shadow: 0 12px 35px rgba(139, 92, 246, 0.3);
-  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 12px 35px rgba(246, 92, 161, 0.3);
+  background: rgb(255, 255, 255);
 }
 
 /* Floating decorative elements */
 .floating-decoration {
   position: absolute;
   font-size: 24px;
-  color: #a855f7;
+  color: #f7b655;
   opacity: 0.4;
   animation: float 6s ease-in-out infinite;
 }
