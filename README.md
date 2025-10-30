@@ -41,7 +41,8 @@ It allows users to browse festival- and event-specific items, manage likes, cart
 | **gh-pages** | Deployment automation |
 
 
-## 🗂️ Project Structure
+## 📁 Project Structure
+
 
 UTSAVKART/
 ├── client/
@@ -136,6 +137,7 @@ UTSAVKART/
 🔊 Voice-based navigation & search
 
 🌍 Multi-language (regional) support
+
 
 
 
