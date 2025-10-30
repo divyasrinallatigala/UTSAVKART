@@ -42,52 +42,53 @@ It allows users to browse festival- and event-specific items, manage likes, cart
 
 
 ## 🗂️ Project Structure
+
 UTSAVKART/
 ├── client/
-│   ├── public/
-│   │   ├── index.html
-│   │   ├── favicon.ico
-│   │   └── manifest.json
-│   │
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── Footer.jsx
-│   │   │   └── UI/
-│   │   │       ├── Card.jsx
-│   │   │       └── Button.jsx
-│   │   │
-│   │   ├── pages/
-│   │   │   ├── Landing.jsx
-│   │   │   ├── Auth.jsx
-│   │   │   ├── Dashboard.jsx
-│   │   │   ├── Categories.jsx
-│   │   │   ├── FestivalItems.jsx
-│   │   │   ├── EventItems.jsx
-│   │   │   ├── Likes.jsx
-│   │   │   ├── Cart.jsx
-│   │   │   └── Orders.jsx
-│   │   │
-│   │   ├── assets/
-│   │   │   ├── images/
-│   │   │   │   ├── logo.png
-│   │   │   │   ├── banner.png
-│   │   │   │   └── preview.png
-│   │   │   └── icons/
-│   │   │       └── cart.svg
-│   │   │
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   ├── routes.js
-│   │   ├── App.css
-│   │   ├── index.css
-│   │   └── tailwind.css
-│   │
-│   ├── .gitignore
-│   ├── package.json
-│   ├── postcss.config.js
-│   ├── tailwind.config.js
-│   └── README.md
+│ ├── public/
+│ │ ├── index.html
+│ │ ├── favicon.ico
+│ │ └── manifest.json
+│ │
+│ ├── src/
+│ │ ├── components/
+│ │ │ ├── Navbar.jsx
+│ │ │ ├── Footer.jsx
+│ │ │ └── UI/
+│ │ │ ├── Card.jsx
+│ │ │ └── Button.jsx
+│ │ │
+│ │ ├── pages/
+│ │ │ ├── Landing.jsx
+│ │ │ ├── Auth.jsx
+│ │ │ ├── Dashboard.jsx
+│ │ │ ├── Categories.jsx
+│ │ │ ├── FestivalItems.jsx
+│ │ │ ├── EventItems.jsx
+│ │ │ ├── Likes.jsx
+│ │ │ ├── Cart.jsx
+│ │ │ └── Orders.jsx
+│ │ │
+│ │ ├── assets/
+│ │ │ ├── images/
+│ │ │ │ ├── logo.png
+│ │ │ │ ├── banner.png
+│ │ │ │ └── preview.png
+│ │ │ └── icons/
+│ │ │ └── cart.svg
+│ │ │
+│ │ ├── App.js
+│ │ ├── index.js
+│ │ ├── routes.js
+│ │ ├── App.css
+│ │ ├── index.css
+│ │ └── tailwind.css
+│ │
+│ ├── .gitignore
+│ ├── package.json
+│ ├── postcss.config.js
+│ ├── tailwind.config.js
+│ └── README.md
 │
 ├── .gitignore
 ├── LICENSE
@@ -135,5 +136,6 @@ UTSAVKART/
 🔊 Voice-based navigation & search
 
 🌍 Multi-language (regional) support
+
 
 
