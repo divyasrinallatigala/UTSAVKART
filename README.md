@@ -42,4 +42,65 @@ It allows users to browse festival- and event-specific items, manage likes, cart
 
 
 ## 🗂️ Project Structure
+client/
+├── public/
+├── src/
+│ ├── components/
+│ │ └── pages/
+│ │ ├── Landing.jsx
+│ │ ├── Auth.jsx
+│ │ ├── Dashboard.jsx
+│ │ ├── Categories.jsx
+│ │ ├── Events.jsx
+│ │ ├── FestivalItems.jsx
+│ │ ├── EventItems.jsx
+│ │ ├── Likes.jsx
+│ │ ├── Cart.jsx
+│ │ └── Orders.jsx
+│ ├── App.js
+│ └── index.js
+├── package.json
+└── tailwind.config.js
+
+
+## ⚙️ Installation & Setup
+
+1. **Clone this repository**
+   git clone https://github.com/divyasrinallatigala/UTSAVKART.git
+2. **Navigate to the project**
+   cd UTSAVKART/client
+3. **Install dependencies**
+   npm install
+4. **Start the app**
+   npm start
+5. **Build for production**
+   npm run build
+6. **Deploy to GitHub Pages**
+   npm run deploy**
+
+   
+## 📸 Screenshots**
+  **1. Landing Page**
+                                    <img width="1889" height="942" alt="Screenshot 2025-10-30 170453" src="https://github.com/user-attachments/assets/3530ec0c-7dda-45b5-bc7f-c8b0679b5824" />
+            
+  **2. Dashboard**
+                                    <img width="1897" height="958" alt="Screenshot 2025-10-30 170616" src="https://github.com/user-attachments/assets/51046041-b97f-4275-a343-c3d0750b0ebe" />
+
+  **3. Categories**
+                                    <img width="1896" height="958" alt="Screenshot 2025-10-30 170740" src="https://github.com/user-attachments/assets/6f6e8437-825d-4e2b-ba2c-082a50143232" />
+
+  **4. Cart**
+                                    <img width="1888" height="950" alt="Screenshot 2025-10-30 170950" src="https://github.com/user-attachments/assets/bfe66579-6785-4a3d-8d7a-e0ee112ff433" />
+
+
+
+## 🚀 Future Enhancements
+
+💳 Payment gateway integration
+
+🧠 AI-powered product recommendations
+
+🔊 Voice-based navigation & search
+
+🌍 Multi-language (regional) support
 
